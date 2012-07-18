@@ -19,7 +19,7 @@ function addJQuery(callback) {
 
 function main() {
 
-    $('head').append('<link rel="stylesheet" href="https://raw.github.com/cnkt/eksi-sidebar/master/eski-sidebar.css" type="text/css" />');
+    $('head').append('<link rel="stylesheet" href="https://raw.github.com/cnkt/eksi-sidebar/master/eksi-sidebar.css" type="text/css" />');
 
     var searchApiRoot = 'https://www.googleapis.com/freebase/v1/search?limit=1&query=';
     var baslik = $('.title a').eq(0).text();
