@@ -19,7 +19,7 @@ function addJQuery(callback) {
 
 function main() {
 
-    $('head').append('<link rel="stylesheet" href="https://raw.github.com/cnkt/eksi-sidebar/master/eksi-sidebar.css" type="text/css" />');
+    $('head').append("<style>#eksi-sidebar{-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 0 20px #eeeeee;-moz-box-shadow:0 0 20px #eeeeee;box-shadow:0 0 20px #eeeeee;background-color:#f8f8f8;background-image:-moz-linear-gradient(top, #ffffff, #eeeeee);background-image:-ms-linear-gradient(top, #ffffff, #eeeeee);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#eeeeee));background-image:-webkit-linear-gradient(top, #ffffff, #eeeeee);background-image:-o-linear-gradient(top, #ffffff, #eeeeee);background-image:linear-gradient(top, #ffffff, #eeeeee);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);font-family:'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;border:1px solid #999999;margin:10px;padding:10px;width:300px;}#eksi-sidebar .topic-thumbnail{margin:10px;}.pull-right{float:right;}.pull-left{float:left;}</style>");
 
     var searchApiRoot = 'https://www.googleapis.com/freebase/v1/search?limit=1&query=';
     var baslik = $('.title a').eq(0).text();
@@ -48,7 +48,7 @@ function main() {
 
     function showTopic(topic) {
         //$('.rightcol').append('<div id="eksi-sidebar"></div>');
-        $('.title').eq(0).after('<div id="eksi-sidebar"></div>');
+        $('.title').eq(0).after('<div id="eksi-sidebar" class="pull-right"></div>');
         var $topic = $("#eksi-sidebar");
         $topic.empty();
         var image_url = '';
