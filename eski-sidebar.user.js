@@ -18,10 +18,6 @@ function addJQuery(callback) {
 }
 
 function main() {
-    $('head').append('\n
-        <style>
-        </style>
-    ');
 
 
     var searchApiRoot = 'https://www.googleapis.com/freebase/v1/search?limit=1&query=';
@@ -41,8 +37,10 @@ function main() {
     );
 
     function getTopic(data) {
+        console.log(data);
         var topicApiRoot = 'https://www.googleapis.com/freebase/v1/topic';
-        $.getJSON(topicApiRoot + data.id + '?callback=?&filter=suggest&filter=/common/topic/article&filter=/common/topic/image', null, function (topic) {
+        var query =  (data.id) ? data.id : data.mid
+        $.getJSON(topicApiRoot + query + '?callback=?&filter=suggest&filter=/common/topic/article&filter=/common/topic/image', null, function (topic) {
             showTopic(topic);
         });
     }
@@ -58,10 +56,10 @@ function main() {
             image_url = 'https://usercontent.googleapis.com/freebase/v1/image' + images[images.length - 1]['id'] + '?maxwidth=100';
         }
         $topic.append('<h3>' + topic['property']['/type/object/name']['values'][0]['text'] + '</h3>');
-        $topic.append('<img class="topic_thumbnail" src="' + image_url + '"/>');
-        var $fact_box = $('<div class="topic_facts"></div>');
-        $fact_box.append('<p class="notable_for">' + topic['property']['/common/topic/notable_for']['values'][0]['text'] + '</p>');
-        var $description = $('<div class="topic_description"></div>');
+        $topic.append('<img class="topic-thumbnail pull-left" src="' + image_url + '"/>');
+        var $fact_box = $('<div class="topic-facts"></div>');
+        $fact_box.append('<p class="notable-for">' + topic['property']['/common/topic/notable_for']['values'][0]['text'] + '</p>');
+        var $description = $('<div class="topic-description"></div>');
         $description.text(topic['property']['/common/topic/article']['values'][0]['property']['/common/document/text']['values'][0]['value'].split("\n")[0]);
         $fact_box.append($description);
         $topic.append($fact_box);
